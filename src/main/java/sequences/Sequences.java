@@ -383,29 +383,6 @@ public class Sequences {
         return s.append("]").toString();
     }
 
-    public static <E, K> KeyedSequence<E, K> key(Sequence<? extends E> sequence,
-            Function<? super E, ? extends K> keyer) {
-        class A extends AbstractKeyedSequence<E, K> {
-            private Sequence<? extends E> s;
-            public A(Sequence<? extends E> s) {
-                this.s = s;
-            }
-            public K keyFor(E element) {
-                return keyer.apply(element);
-            }
-            public boolean isEmpty() {
-                return s.isEmpty();
-            }
-            public E first() {
-                return s.first();
-            }
-            public KeyedSequence<E, K> rest() {
-                return new A(s.rest());
-            }
-        }
-        return new A(sequence);
-    }
-
     private static <T> T fail(String message) {
         throw new RuntimeException(message);
     }

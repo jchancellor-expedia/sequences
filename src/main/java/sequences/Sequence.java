@@ -108,10 +108,6 @@ public interface Sequence<E> extends Iterable<E> {
         return Sequences.partition(this, size);
     }
 
-    public default <K> KeyedSequence<E, K> key(Function<? super E, ? extends K> keyer) {
-        return Sequences.key(this, keyer);
-    }
-
     public default String makeString() {
         return Sequences.makeString(this);
     }
